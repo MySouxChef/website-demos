@@ -137,6 +137,41 @@ Push to GitHub — Vercel auto-deploys. Or use `vercel:deploy` skill for a previ
 | long_description | no | Detailed description for info page |
 | thumbnail | no | Relative path to thumbnail image in demo folder |
 
+## Graebener.tech Integration
+
+This repo feeds demo sites into the Graebener.tech portfolio at `/webbuilder`.
+
+### How it works
+- Graebener.tech's API routes (`/api/sites` and `/api/sites/[slug]`) fetch directly from this GitHub repo
+- They read from the `sites/` folder at the repo root (NOT `src/demos/`)
+- Each site needs: `sites/[slug]/index.html` (self-contained HTML) + `sites/[slug]/meta.json`
+
+### Two folders, two purposes
+| Folder | Purpose | Format |
+|--------|---------|--------|
+| `src/demos/` | React components for the local Next.js gallery | `.tsx` + CSS Modules |
+| `sites/` | Static HTML for Graebener.tech webbuilder display | Self-contained `.html` |
+
+### Export workflow
+When a demo is ready to show on Graebener.tech:
+1. Create `sites/[slug]/index.html` — self-contained HTML with inlined CSS/JS
+2. Create `sites/[slug]/meta.json` — same format as `src/demos/` meta.json
+3. Push to GitHub — Graebener.tech picks it up automatically (60s cache)
+
+### meta.json format for sites/
+```json
+{
+  "title": "Site Title",
+  "description": "Short description",
+  "industry": "restaurant",
+  "category": "landing-page",
+  "tags": ["tag1", "tag2"],
+  "status": "published",
+  "color_accent": "#8BC63F",
+  "client_name": "Optional"
+}
+```
+
 ## Skills Reference
 - `frontend-design` — Use for ALL demo page creation
 - `vercel:deploy` — Deploy previews or production (`/deploy prod`)
