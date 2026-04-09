@@ -1,0 +1,10 @@
+{
+  "title": "Site Title",
+  "description": "A short description of the site.",
+  "industry": "technology",
+  "category": "landing-page",
+  "tags": ["modern", "responsive"],
+  "status": "draft",
+  "color_accent": "#6366f1",
+  "client_name": ""
+}
