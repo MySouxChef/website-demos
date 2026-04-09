@@ -1,0 +1,12 @@
+{
+  "title": "Mr Juicy — Burger Restaurant",
+  "description": "Bold, neo-brutalist landing page for a premium burger restaurant in San Antonio, TX. Features animated hero, scrolling marquee, menu cards, testimonials, and location info.",
+  "industry": "restaurant",
+  "category": "landing-page",
+  "tags": ["neo-brutalist", "food", "bold", "lime-green", "san-antonio"],
+  "status": "published",
+  "color_accent": "#8BC63F",
+  "tech_stack": ["css-modules", "react", "scroll-animations"],
+  "client_name": "Mr Juicy",
+  "long_description": "A full-featured restaurant landing page for Mr Juicy, a premium burger spot in San Antonio. The design uses a neo-brutalist style with chunky borders, solid-color offset shadows, and a lime green + charcoal color palette. Includes animated floating burger hero, infinite-scroll marquee, featured menu cards with hover effects, split-layout about section with community stats, customer testimonials, dual location cards, and a catering/merch extras section."
+}
