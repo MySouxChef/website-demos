@@ -1,0 +1,12 @@
+{
+  "title": "Demo Title",
+  "description": "A short description of the demo.",
+  "industry": "technology",
+  "category": "landing-page",
+  "tags": ["modern", "responsive"],
+  "status": "draft",
+  "color_accent": "#6366f1",
+  "tech_stack": ["tailwind"],
+  "client_name": "",
+  "long_description": ""
+}
