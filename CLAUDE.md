@@ -7,6 +7,7 @@ A workspace for researching, building, and showcasing demo websites for potentia
 - **Next.js 16.2.3** (App Router, TypeScript, React 19)
 - **Tailwind CSS v4** (via `@tailwindcss/postcss`, CSS-first config in `globals.css`)
 - **shadcn/ui** components (Base UI + class-variance-authority for styling)
+- **Firecrawl** — web scraping for research (`@mendable/firecrawl-js` + MCP server)
 - **File-based data** — no database, each demo has a `meta.json`
 - **Deployment**: Vercel (auto-deploys from GitHub)
 
@@ -45,6 +46,7 @@ src/
 │   └── ui/                       # shadcn components (badge, button, card, input, separator, skeleton)
 └── lib/
     ├── demos.ts                  # getAllDemos(), getDemo(slug), getAllSlugs() — reads filesystem
+    ├── firecrawl.ts              # scrapePage(), crawlSite(), mapSite(), searchWeb() utilities
     ├── types.ts                  # DemoMeta, Demo, DemoStatus types
     ├── constants.ts              # INDUSTRIES[], CATEGORIES[] arrays
     └── utils.ts                  # cn() utility
@@ -72,6 +74,40 @@ sites/                            # === STATIC HTML FOR GRAEBENER.TECH ===
 - Each site is a folder with `index.html` + assets + `meta.json`
 - Cards appear at `/webbuilder`, clicking opens the full HTML site in a new tab
 - **To display a demo on Graebener.tech**: copy the HTML/CSS/JS/assets directly into `Graebener.tech/public/webbuilder/sites/[slug]/`
+
+## Research Workflow (Firecrawl)
+
+Firecrawl is available two ways: as an **MCP server** (use tools directly in conversation) and as an **npm package** (`src/lib/firecrawl.ts`).
+
+### MCP Tools (interactive research)
+Use these during conversation to research before building a demo:
+- **firecrawl_scrape** — Scrape a single page (returns markdown + HTML + metadata)
+- **firecrawl_crawl** — Crawl an entire site (follows links, returns all pages)
+- **firecrawl_map** — Discover all URLs on a site without scraping content
+- **firecrawl_search** — Search the web for sites by query
+- **firecrawl_extract** — Extract structured data from pages
+
+### Research before building a demo
+1. **Map the site**: `firecrawl_map` to discover all pages and structure
+2. **Scrape key pages**: `firecrawl_scrape` the homepage, about, menu/services pages
+3. **Analyze**: Review the markdown for brand voice, content structure, color hints
+4. **Build**: Use `frontend-design` skill with the research as context
+
+### Design inspiration
+1. **Search**: `firecrawl_search` for "[industry] website design 2026"
+2. **Scrape references**: Pull HTML/CSS patterns from top results
+3. **Clone/adapt**: Use scraped structure as a starting point for the demo
+
+### npm utilities (`src/lib/firecrawl.ts`)
+For scripted/automated research:
+- `scrapePage(url)` — Single page scrape → markdown + html + metadata
+- `crawlSite(url, { maxDepth, limit })` — Full site crawl
+- `mapSite(url)` — URL discovery
+- `searchWeb(query, { limit })` — Web search with scraped results
+
+### Environment
+- API key in `.env.local` as `FIRECRAWL_API_KEY` (gitignored)
+- MCP server configured in Claude Code local config
 
 ## Demo Creation Workflow
 
