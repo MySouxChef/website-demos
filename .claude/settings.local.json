@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(npx next:*)",
+      "Bash(npx shadcn@latest --help)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --src-dir --use-npm --eslint)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(cp -r \"/c/Users/markg/projects/website-demos-temp/\"* \"/c/Users/markg/projects/website demos/\")",
+      "Bash(cp -r \"/c/Users/markg/projects/website-demos-temp/\".* \"/c/Users/markg/projects/website demos/\")",
+      "Bash(rm -rf \"/c/Users/markg/projects/website-demos-temp\")",
+      "Bash(npx shadcn@latest init -d)"
+    ]
+  }
+}
