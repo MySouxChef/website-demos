@@ -154,9 +154,9 @@ This repo feeds demo sites into the Graebener.tech portfolio at `/webbuilder`.
 
 ### Export workflow
 When a demo is ready to show on Graebener.tech:
-1. Create `sites/[slug]/index.html` — self-contained HTML with inlined CSS/JS
-2. Create `sites/[slug]/meta.json` — same format as `src/demos/` meta.json
-3. Push to GitHub — Graebener.tech picks it up automatically (60s cache)
+1. Copy the demo's HTML/CSS/JS/assets into `Graebener.tech/public/webbuilder/sites/[slug]/`
+2. Add a `meta.json` with title, description, industry, tags, status
+3. Push Graebener.tech — card appears at `/webbuilder`, clicking opens the full site
 
 ### meta.json format for sites/
 ```json
@@ -177,6 +177,15 @@ When a demo is ready to show on Graebener.tech:
 - `vercel:deploy` — Deploy previews or production (`/deploy prod`)
 - `vercel:shadcn` — Add shadcn components
 - `vercel:nextjs` — Reference for App Router patterns
+
+## Git Workflow (git-auto skill)
+
+This project uses the **git-auto** skill (`.claude/skills/git-auto/SKILL.md`) for all git operations:
+- Use **conventional commits**: `feat:`, `fix:`, `refactor:`, `docs:`, `style:`, `test:`, `chore:`
+- **Stage files explicitly** — never `git add -A` or `git add .`
+- **Log every git session** to `.claude/git-auto-log.json`
+- Never commit `.env`, credentials, or secrets
+- Never force push to main/master/prod
 
 ## Commands
 - `npm run dev` — Start dev server
